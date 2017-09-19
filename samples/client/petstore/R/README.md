@@ -1,1 +1,0 @@
-https://github.com/swagger-api/swagger-codegen/issues/2231
