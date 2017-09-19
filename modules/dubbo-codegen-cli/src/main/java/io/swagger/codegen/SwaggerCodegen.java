@@ -23,8 +23,8 @@ public class SwaggerCodegen {
 
         @SuppressWarnings("unchecked")
         Cli.CliBuilder<Runnable> builder =
-                Cli.<Runnable>builder("swagger-codegen-cli-lite")
-                        .withDescription(String.format("Swagger code generator CLI (version %s). More info on swagger.io", version))
+                Cli.<Runnable>builder("dubbo-codegen-cli")
+                        .withDescription(String.format("Dubbo code generator CLI (version %s).", version))
                         .withDefaultCommand(Langs.class)
                         .withCommands(
                                 Generate.class,

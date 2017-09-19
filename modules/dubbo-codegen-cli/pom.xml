@@ -2,19 +2,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <groupId>io.swagger</groupId>
-        <artifactId>swagger-codegen-project</artifactId>
-        <version>2.3.0-SNAPSHOT</version>
+        <artifactId>dubbo-codegen-project</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../..</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>swagger-codegen-cli</artifactId>
+    <artifactId>dubbo-codegen-cli</artifactId>
     <packaging>jar</packaging>
-
-    <name>swagger-codegen (executable)</name>
+    <name>dubbo-codegen (executable)</name>
 
     <build>
-        <finalName>swagger-codegen-cli</finalName>
+        <finalName>dubbo-codegen-cli</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -76,7 +75,7 @@
 
         <dependency>
             <groupId>io.swagger</groupId>
-            <artifactId>swagger-codegen-lite</artifactId>
+            <artifactId>dubbo-codegen</artifactId>
             <version>${project.version}</version>
         </dependency>
         <!--https://github.com/airlift/airline-->

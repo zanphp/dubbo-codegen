@@ -6,15 +6,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.swagger</groupId>
-    <artifactId>swagger-codegen-project</artifactId>
+    <artifactId>dubbo-codegen-project</artifactId>
     <packaging>pom</packaging>
-    <name>swagger-codegen-project</name>
-    <version>2.3.0-SNAPSHOT</version>
-    <url>https://github.com/swagger-api/swagger-codegen</url>
+    <name>dubbo-codegen-project</name>
+    <version>1.0.0-SNAPSHOT</version>
+    <url>https://github.com/zanphp/dubbo-codegen</url>
     <scm>
-        <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>
-        <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
-        <url>https://github.com/swagger-api/swagger-codegen</url>
+        <connection>scm:git:git@github.com:zanphp/dubbo-codegen.git</connection>
+        <developerConnection>scm:git:git@github.com:zanphp/dubbo-codegen.git</developerConnection>
+        <url>https://github.com/zanphp/dubbo-codegen</url>
     </scm>
     <developers>
         <developer>
@@ -28,16 +28,6 @@
             <email>wing328hk@gmail.com</email>
         </developer>
     </developers>
-    <issueManagement>
-        <system>github</system>
-        <url>https://github.com/swagger-api/swagger-codegen/issues</url>
-    </issueManagement>
-    <mailingLists>
-        <mailingList>
-            <name>swagger-swaggersocket</name>
-            <archive>https://groups.google.com/forum/#!forum/swagger-swaggersocket</archive>
-        </mailingList>
-    </mailingLists>
     <licenses>
         <license>
             <name>Apache License 2.0</name>
@@ -241,8 +231,8 @@
         </profile>
     </profiles>
     <modules>
-        <module>modules/swagger-codegen-lite</module>
-        <module>modules/swagger-codegen-cli-lite</module>
+        <module>modules/dubbo-codegen</module>
+        <module>modules/dubbo-codegen-cli</module>
     </modules>
 
     <repositories>
