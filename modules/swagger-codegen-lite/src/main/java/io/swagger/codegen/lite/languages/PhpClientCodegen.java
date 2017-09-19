@@ -24,11 +24,11 @@ public class PhpClientCodegen extends DefaultCodegen implements CodegenConfig {
     protected String composerProjectName = null;
     protected String packagePath = "SwaggerClient-php";
     protected String artifactVersion = null;
-    protected String srcBasePath = "lib";
+    protected String srcBasePath = "src";
     protected String testBasePath = "test";
     protected String docsBasePath = "docs";
-    protected String apiDirName = "Api";
-    protected String modelDirName = "Model";
+    protected String apiDirName = "Service";
+    protected String modelDirName = "Entity";
     protected String variableNamingConvention= "snake_case";
     protected String apiDocPath = docsBasePath + "/" + apiDirName;
     protected String modelDocPath = docsBasePath + "/" + modelDirName;
@@ -42,16 +42,16 @@ public class PhpClientCodegen extends DefaultCodegen implements CodegenConfig {
 
         supportsInheritance = true;
         outputFolder = "generated-code" + File.separator + "php";
-        modelTemplateFiles.put("model.mustache", ".php");
-        apiTemplateFiles.put("api.mustache", ".php");
-        modelTestTemplateFiles.put("model_test.mustache", ".php");
-        apiTestTemplateFiles.put("api_test.mustache", ".php");
+        modelTemplateFiles.put("entity.mustache", ".php");
+        apiTemplateFiles.put("service.mustache", ".php");
+        // modelTestTemplateFiles.put("model_test.mustache", ".php");
+        // apiTestTemplateFiles.put("api_test.mustache", ".php");
         embeddedTemplateDir = templateDir = "php";
         apiPackage = invokerPackage + "\\" + apiDirName;
         modelPackage = invokerPackage + "\\" + modelDirName;
 
-        modelDocTemplateFiles.put("model_doc.mustache", ".md");
-        apiDocTemplateFiles.put("api_doc.mustache", ".md");
+        // modelDocTemplateFiles.put("model_doc.mustache", ".md");
+        // apiDocTemplateFiles.put("api_doc.mustache", ".md");
 
         setReservedWordsLowerCase(
                 Arrays.asList(
@@ -278,16 +278,15 @@ public class PhpClientCodegen extends DefaultCodegen implements CodegenConfig {
         additionalProperties.put("modelTestPath", "./" + testBasePath + "/" + modelDirName);
 
         // make api and model doc path available in mustache template
-        additionalProperties.put("apiDocPath", apiDocPath);
-        additionalProperties.put("modelDocPath", modelDocPath);
+        // additionalProperties.put("apiDocPath", apiDocPath);
+        // additionalProperties.put("modelDocPath", modelDocPath);
 
         // make test path available in mustache template
         additionalProperties.put("testBasePath", testBasePath);
 
         supportingFiles.add(new SupportingFile("ObjectSerializer.mustache", toPackagePath(invokerPackage, srcBasePath), "ObjectSerializer.php"));
-        supportingFiles.add(new SupportingFile("ModelInterface.mustache", toPackagePath(modelPackage, srcBasePath), "ModelInterface.php"));
+        supportingFiles.add(new SupportingFile("EntityInterface.mustache", toPackagePath(modelPackage, srcBasePath), "EntityInterface.php"));
         supportingFiles.add(new SupportingFile("composer.mustache", getPackagePath(), "composer.json"));
-//        supportingFiles.add(new SupportingFile("README.mustache", getPackagePath(), "README.md"));
         supportingFiles.add(new SupportingFile("git_push.sh.mustache", getPackagePath(), "git_push.sh"));
     }
 
