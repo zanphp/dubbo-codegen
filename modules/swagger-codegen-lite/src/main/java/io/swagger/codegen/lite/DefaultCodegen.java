@@ -3,7 +3,6 @@ package io.swagger.codegen.lite;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.samskivert.mustache.Mustache.Compiler;
-import io.swagger.codegen.lite.examples.ExampleGenerator;
 import io.swagger.models.*;
 import io.swagger.models.auth.*;
 import io.swagger.models.parameters.*;
@@ -2134,7 +2133,7 @@ public class DefaultCodegen {
                             op.returnBaseType = cm.baseType;
                         }
                     }
-                    op.examples = new ExampleGenerator(definitions).generate(methodResponse.getExamples(), operation.getProduces(), responseProperty);
+                    op.examples = null;
                     op.defaultResponse = toDefaultValue(responseProperty);
                     op.returnType = cm.datatype;
                     op.hasReference = definitions != null && definitions.containsKey(op.returnBaseType);
@@ -2221,7 +2220,7 @@ public class DefaultCodegen {
                     bodyParam = p;
                     bodyParams.add(p.copy());
                     if(definitions != null) {
-                        op.requestBodyExamples = new ExampleGenerator(definitions).generate(null, operation.getConsumes(), bodyParam.dataType);
+                        op.requestBodyExamples = null;
                     }
                 } else if (param instanceof FormParameter) {
                     formParams.add(p.copy());

@@ -103,6 +103,7 @@ public abstract class AbstractGenerator {
     }
 
     public String readResourceContents(String resourceFilePath) {
+        System.err.println(resourceFilePath);
         StringBuilder sb = new StringBuilder();
         Scanner scanner = new Scanner(this.getClass().getResourceAsStream(getCPResourcePath(resourceFilePath)), "UTF-8");
         while (scanner.hasNextLine()) {

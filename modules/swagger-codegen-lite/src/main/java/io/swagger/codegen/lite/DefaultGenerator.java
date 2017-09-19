@@ -593,34 +593,6 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
             }
             files.add(ignoreFile);
         }
-
-        final String swaggerVersionMetadata = config.outputFolder() + File.separator + ".swagger-codegen" + File.separator + "VERSION";
-        File swaggerVersionMetadataFile = new File(swaggerVersionMetadata);
-        try {
-            writeToFile(swaggerVersionMetadata, ImplementationVersion.read());
-            files.add(swaggerVersionMetadataFile);
-        } catch (IOException e) {
-            throw new RuntimeException("Could not generate supporting file '" + swaggerVersionMetadata + "'", e);
-        }
-
-        /*
-         * The following code adds default LICENSE (Apache-2.0) for all generators
-         * To use license other than Apache2.0, update the following file:
-         *   modules/swagger-codegen/src/main/resources/_common/LICENSE
-         *
-        final String apache2License = "LICENSE";
-        String licenseFileNameTarget = config.outputFolder() + File.separator + apache2License;
-        File licenseFile = new File(licenseFileNameTarget);
-        String licenseFileNameSource = File.separator + config.getCommonTemplateDir() + File.separator + apache2License;
-        String licenseFileContents = readResourceContents(licenseFileNameSource);
-        try {
-            writeToFile(licenseFileNameTarget, licenseFileContents);
-        } catch (IOException e) {
-            throw new RuntimeException("Could not generate LICENSE file '" + apache2License + "'", e);
-        }
-        files.add(licenseFile);
-         */
-
     }
 
     private Map<String, Object> buildSupportFileBundle(List<Object> allOperations, List<Object> allModels) {
