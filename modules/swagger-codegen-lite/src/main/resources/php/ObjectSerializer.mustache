@@ -227,19 +227,6 @@ class ObjectSerializer
         } elseif (in_array($class, [{{&primitives}}], true)) {
             settype($data, $class);
             return $data;
-        } elseif ($class === '\SplFileObject') {
-            /** @var \Psr\Http\Message\StreamInterface $data */
-
-            // determine file name
-            $filename = tempnam(Configuration::getDefaultConfiguration()->getTempFolderPath(), '');
-
-            $file = fopen($filename, 'w');
-            while ($chunk = $data->read(200)) {
-                fwrite($file, $chunk);
-            }
-            fclose($file);
-
-            return new \SplFileObject($filename, 'r');
         } elseif (method_exists($class, 'getAllowableEnumValues')) {
             if (!in_array($data, $class::getAllowableEnumValues())) {
                 $imploded = implode("', '", $class::getAllowableEnumValues());

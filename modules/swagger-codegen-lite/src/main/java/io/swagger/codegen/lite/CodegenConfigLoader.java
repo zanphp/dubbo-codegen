@@ -1,5 +1,7 @@
 package io.swagger.codegen.lite;
 
+import io.swagger.codegen.lite.languages.PhpClientCodegen;
+
 import java.util.ServiceLoader;
 
 import static java.util.ServiceLoader.load;
@@ -12,6 +14,10 @@ public class CodegenConfigLoader {
      * @return config class
      */
     public static CodegenConfig forName(String name) {
+        if (name.equals("php")) {
+            return new PhpClientCodegen();
+        }
+
         ServiceLoader<CodegenConfig> loader = load(CodegenConfig.class);
 
         StringBuilder availableConfigs = new StringBuilder();

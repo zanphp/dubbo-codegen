@@ -3,7 +3,6 @@ package io.swagger.codegen.lite.config;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import io.swagger.codegen.lite.*;
-import io.swagger.codegen.lite.languages.PhpClientCodegen;
 import io.swagger.models.Swagger;
 import io.swagger.parser.SwaggerParser;
 import io.swagger.util.Json;
@@ -39,7 +38,6 @@ public class CodegenConfigurator implements Serializable {
     private boolean skipOverwrite;
     private boolean removeOperationIdPrefix;
     private String templateDir;
-    private String auth;
     private String apiPackage;
     private String modelPackage;
     private String invokerPackage;
@@ -60,8 +58,6 @@ public class CodegenConfigurator implements Serializable {
 
     private String gitUserId="GIT_USER_ID";
     private String gitRepoId="GIT_REPO_ID";
-    private String releaseNote="Minor update";
-    private String httpUserAgent;
 
     private final Map<String, Object> dynamicProperties = new HashMap<String, Object>(); //the map that holds the JsonAnySetter/JsonAnyGetter values
 
@@ -163,15 +159,6 @@ public class CodegenConfigurator implements Serializable {
         }
 
         this.templateDir = f.getAbsolutePath();
-        return this;
-    }
-
-    public String getAuth() {
-        return auth;
-    }
-
-    public CodegenConfigurator setAuth(String auth) {
-        this.auth = auth;
         return this;
     }
 
@@ -331,24 +318,6 @@ public class CodegenConfigurator implements Serializable {
         return this;
     }
 
-    public String getReleaseNote() {
-        return releaseNote;
-    }
-
-    public CodegenConfigurator setReleaseNote(String releaseNote) {
-        this.releaseNote = releaseNote;
-        return this;
-    }
-
-    public String getHttpUserAgent() {
-        return httpUserAgent;
-    }
-
-    public CodegenConfigurator setHttpUserAgent(String httpUserAgent) {
-        this.httpUserAgent= httpUserAgent;
-        return this;
-    }
-
     public  Map<String, String> getReservedWordsMappings() {
         return reservedWordMappings;
     }
@@ -380,8 +349,7 @@ public class CodegenConfigurator implements Serializable {
         setVerboseFlags();
         setSystemProperties();
 
-//         CodegenConfig config = CodegenConfigLoader.forName(lang);
-        CodegenConfig config = new PhpClientCodegen();
+        CodegenConfig config = CodegenConfigLoader.forName(lang);
 
         config.setInputSpec(inputSpec);
         config.setOutputDir(outputDir);
@@ -406,8 +374,6 @@ public class CodegenConfigurator implements Serializable {
         checkAndSetAdditionalProperty(modelNameSuffix, CodegenConstants.MODEL_NAME_SUFFIX);
         checkAndSetAdditionalProperty(gitUserId, CodegenConstants.GIT_USER_ID);
         checkAndSetAdditionalProperty(gitRepoId, CodegenConstants.GIT_REPO_ID);
-        checkAndSetAdditionalProperty(releaseNote, CodegenConstants.RELEASE_NOTE);
-        checkAndSetAdditionalProperty(httpUserAgent, CodegenConstants.HTTP_USER_AGENT);
 
         handleDynamicProperties(config);
 

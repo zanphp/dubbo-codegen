@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 @Command(name = "version", description = "Show version information")
 public class Version implements Runnable {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Meta.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Version.class);
 
     private static final String VERSION_PLACEHOLDER = "${project.version}";
 

@@ -44,13 +44,6 @@ public class Generate implements Runnable {
     private String templateDir;
 
     @Option(
-            name = {"-a", "--auth"},
-            title = "authorization",
-            description = "adds authorization headers when fetching the swagger definitions remotely. "
-                    + "Pass in a URL-encoded string of name:header with a comma separating multiple values")
-    private String auth;
-
-    @Option(
             name = {"-D"},
             title = "system properties",
             description = "sets specified system properties in "
@@ -149,14 +142,6 @@ public class Generate implements Runnable {
             description = CodegenConstants.GIT_REPO_ID_DESC)
     private String gitRepoId;
 
-    @Option(name = {"--release-note"}, title = "release note",
-            description = CodegenConstants.RELEASE_NOTE_DESC)
-    private String releaseNote;
-
-    @Option(name = {"--http-user-agent"}, title = "http user agent",
-            description = CodegenConstants.HTTP_USER_AGENT_DESC)
-    private String httpUserAgent;
-
     @Option(
             name = {"--reserved-words-mappings"},
             title = "reserved word mappings",
@@ -205,10 +190,6 @@ public class Generate implements Runnable {
             configurator.setOutputDir(output);
         }
 
-        if (isNotEmpty(auth)) {
-            configurator.setAuth(auth);
-        }
-
         if (isNotEmpty(templateDir)) {
             configurator.setTemplateDir(templateDir);
         }
@@ -255,14 +236,6 @@ public class Generate implements Runnable {
 
         if (isNotEmpty(gitRepoId)) {
             configurator.setGitRepoId(gitRepoId);
-        }
-
-        if (isNotEmpty(releaseNote)) {
-            configurator.setReleaseNote(releaseNote);
-        }
-
-        if (isNotEmpty(httpUserAgent)) {
-            configurator.setHttpUserAgent(httpUserAgent);
         }
 
         if (isNotEmpty(ignoreFileOverride)) {

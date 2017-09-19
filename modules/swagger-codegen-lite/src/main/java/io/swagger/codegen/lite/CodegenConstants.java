@@ -165,12 +165,6 @@ public class CodegenConstants {
     public static final String RELEASE_NOTE = "releaseNote";
     public static final String RELEASE_NOTE_DESC = "Release note, default to 'Minor update'.";
 
-    public static final String HTTP_USER_AGENT = "httpUserAgent";
-    public static final String HTTP_USER_AGENT_DESC = "HTTP user agent, e.g. codegen_csharp_api_client, default to 'Swagger-Codegen/{packageVersion}}/{language}'";
-
-    public static final String SUPPORTS_ES6 = "supportsES6";
-    public static final String SUPPORTS_ES6_DESC = "Generate code that conforms to ES6.";
-
     public static final String EXCLUDE_TESTS = "excludeTests";
     public static final String EXCLUDE_TESTS_DESC = "Specifies that no tests are to be generated.";
 

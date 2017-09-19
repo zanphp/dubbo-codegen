@@ -5,7 +5,6 @@ import io.airlift.airline.Help;
 import io.swagger.codegen.cmd.ConfigHelp;
 import io.swagger.codegen.cmd.Generate;
 import io.swagger.codegen.cmd.Langs;
-import io.swagger.codegen.cmd.Meta;
 import io.swagger.codegen.cmd.Validate;
 import io.swagger.codegen.cmd.Version;
 
@@ -21,16 +20,19 @@ public class SwaggerCodegen {
 
     public static void main(String[] args) {
         String version = Version.readVersionFromResources();
+
         @SuppressWarnings("unchecked")
         Cli.CliBuilder<Runnable> builder =
-                Cli.<Runnable>builder("swagger-codegen-cli")
-                        .withDescription(
-                                String.format(
-                                        "Swagger code generator CLI (version %s). More info on swagger.io",
-                                        version))
+                Cli.<Runnable>builder("swagger-codegen-cli-lite")
+                        .withDescription(String.format("Swagger code generator CLI (version %s). More info on swagger.io", version))
                         .withDefaultCommand(Langs.class)
-                        .withCommands(Generate.class, Meta.class, Langs.class, Help.class,
-                                ConfigHelp.class, Validate.class, Version.class);
+                        .withCommands(
+                                Generate.class,
+                                Langs.class,
+                                Help.class,
+                                ConfigHelp.class,
+                                Validate.class,
+                                Version.class);
 
         builder.build().parse(args).run();
     }
